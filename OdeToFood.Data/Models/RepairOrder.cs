@@ -16,5 +16,15 @@ namespace OdeToFood.Data.Models
 
         [Display(Name="Repair status")]
         public Status StatusRepair { get; set; }
+
+        [Required]
+        [Display(Name="Begin date")]
+        [DataType(DataType.Date)]
+        public DateTime BeginDate { get; set; }
+        
+        [Required]
+        [Display(Name = "End date")]
+        [DataType(DataType.Date)]
+        public DateTime EndDate { get; set; }
     }
 }
