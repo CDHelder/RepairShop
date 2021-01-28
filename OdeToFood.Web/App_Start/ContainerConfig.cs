@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
+using OdeToFood.Data.Services;
 using RepairShop.Data.Services;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,8 @@ namespace RepairShop.Web
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
             builder.RegisterApiControllers(typeof(MvcApplication).Assembly);
-            builder.RegisterType<InMemoryRepairOrderData>().As<IRepairOrderData>().SingleInstance();
+            builder.RegisterType<SqlRepairOrderData>().As<IRepairOrderData>().InstancePerRequest();
+            builder.RegisterType<RepairShopDbContext>().InstancePerRequest();
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

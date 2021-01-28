@@ -12,7 +12,5 @@ namespace RepairShop.Data.Models
         Under_repair,
         Waiting_for_parts,
         Done
-
-        //in afwachting, in behandeling, Wacht op onderdelen, Klaar
     }
 }
