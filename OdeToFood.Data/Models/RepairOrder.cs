@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OdeToFood.Data.Models
+namespace RepairShop.Data.Models
 {
     public class RepairOrder
     {

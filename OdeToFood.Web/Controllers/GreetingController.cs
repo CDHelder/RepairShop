@@ -1,12 +1,12 @@
 ﻿using System;
-using OdeToFood.Web.Models;
+using RepairShop.Web.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Configuration;
 
-namespace OdeToFood.Web.Controllers
+namespace RepairShop.Web.Controllers
 {
     public class GreetingController : Controller
     {

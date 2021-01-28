@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace OdeToFood.Web
+namespace RepairShop.Web
 {
     public class BundleConfig
     {
