@@ -31,7 +31,14 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.BeginDate)
+            @if (Model.BeginDate <= DateTime.Today)
+            {
+                <p style="color:red">@Model.BeginDate.ToShortDateString()</p>
+            }
+            else
+            {
+                @Html.DisplayFor(model => Model.BeginDate)
+            }
         </dd>
         <br>
         <dt>
