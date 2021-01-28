@@ -8,19 +8,7 @@ namespace RepairShop.Data.Services
     public class InMemoryRepairOrderData : IRepairOrderData
     {
         List<RepairOrder> repairOrders;
-        List<Status> statusOrders;
-
-        public InMemoryRepairOrderData()
-        {
-            repairOrders = new List<RepairOrder>()
-            {
-                new RepairOrder { Id =  1, Name = "Henk Jansen", StatusRepair = Status.Under_repair, BeginDate = DateTime.Today, EndDate = DateTime.Today.AddDays(7) },
-                new RepairOrder { Id =  2, Name = "Jaap Tokki", StatusRepair = Status.Done, BeginDate = DateTime.Today, EndDate = DateTime.Today.AddDays(7) },
-                new RepairOrder { Id =  3, Name = "Jan de Jong", StatusRepair = Status.Waiting_for_parts, BeginDate = DateTime.Today, EndDate = DateTime.Today.AddDays(7) },
-            };
-
-            statusOrders = new List<Status>();
-        }
+        // misschien hier lijst ophalen met STATUS INHOUD en TELLING
 
         public void Add(RepairOrder repairOrder)
         {
@@ -58,11 +46,5 @@ namespace RepairShop.Data.Services
                 repairOrders.Remove(repairorder);
             }
         }
-        /*
-        public Status Get(string status)
-        {
-            return statusOrders.ForEach
-        }
-        */
     }
 }
