@@ -12,6 +12,7 @@ namespace RepairShop.Data.Models
         public int Id { get; set; }
 
         [Required]
+        [MaxLength(255)]
         public string Name { get; set; }
 
         [Display(Name="Repair status")]
@@ -26,5 +27,11 @@ namespace RepairShop.Data.Models
         [Display(Name = "End date")]
         [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
+        
+        [Display(Name = "Description")]
+        [DataType(DataType.MultilineText)]
+        [MaxLength(500)]
+        public string Description { get; set; }
+        
     }
 }
