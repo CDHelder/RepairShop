@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Details";
+    string bgcolor;
+    string status = Model.StatusRepair.ToString();
 }
 
 <h2>Details of @Html.DisplayFor(model => model.Name)</h2>
@@ -22,7 +24,15 @@
             @Html.DisplayNameFor(model => model.StatusRepair)
         </dt>
 
-        <dd>
+        @switch (status)
+        {
+            case "On_hold": bgcolor = "red"; break;
+            case "Under_repair": bgcolor = "black"; break;
+            case "Waiting_for_parts": bgcolor = "black"; break;
+            case "Done": bgcolor = "darkgreen"; break;
+            default: bgcolor = "black"; return;
+        }
+        <dd style="color:@bgcolor;">
             @Html.DisplayFor(model => model.StatusRepair)
         </dd>
         <br>
@@ -31,14 +41,7 @@
         </dt>
 
         <dd>
-            @if (Model.BeginDate <= DateTime.Today)
-            {
-                <p style="color:red">@Model.BeginDate.ToShortDateString()</p>
-            }
-            else
-            {
-                @Html.DisplayFor(model => Model.BeginDate)
-            }
+            @Html.DisplayFor(model => Model.BeginDate)
         </dd>
         <br>
         <dt>
@@ -47,6 +50,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.EndDate)
+        </dd>
+        <br>
+        <dt>
+            @Html.DisplayNameFor(model => model.RepairParts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RepairParts)
         </dd>
         <br>
         <dt>

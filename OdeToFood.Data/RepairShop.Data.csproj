@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Parts.cs" />
     <Compile Include="Models\Status.cs" />
     <Compile Include="Models\RepairOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

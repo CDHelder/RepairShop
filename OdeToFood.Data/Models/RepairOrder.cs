@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OdeToFood.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -15,25 +16,27 @@ namespace RepairShop.Data.Models
         [MaxLength(255)]
         public string Name { get; set; }
 
-        [Display(Name="Repair status")]
+        [Display(Name = "Repair status")]
         public Status StatusRepair { get; set; }
 
         [Required]
-        [Display(Name="Begin date")]
+        [Display(Name = "Begin date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        //[DisplayFormat( ApplyFormatInEditMode = true)]
         public DateTime BeginDate { get; set; }
-        
+
         [Required]
         [Display(Name = "End date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        //[DisplayFormat( ApplyFormatInEditMode = true)]
         public DateTime EndDate { get; set; }
-        
+
+        [Display(Name = "Parts")]
+        public Parts RepairParts { get; set; }
+
         [Display(Name = "Description")]
         [DataType(DataType.MultilineText)]
         [MaxLength(500)]
         public string Description { get; set; }
-        
     }
 }

@@ -29,26 +29,32 @@
 
     @foreach (var item in Model)
     {
-        if (item.StatusRepair.ToString() == "On_hold")
+        if (item.BeginDate <= DateTime.Today)
         {
+            string bgcolor;
+            string status = item.StatusRepair.ToString();
+
             <tr style='background-color:lightcoral;'>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
 
-                <td>
+                    @switch (status)
+                    {
+                        case "On_hold": bgcolor = "red"; break;
+                        case "Under_repair": bgcolor = "black"; break;
+                        case "Waiting_for_parts": bgcolor = "black"; break;
+                        case "Done": bgcolor = "darkgreen"; break;
+                        default: bgcolor = "black"; return;
+                    }
+
+                <td style="color:@bgcolor;">
                     @Html.DisplayFor(modelItem => item.StatusRepair)
+                    
                 </td>
 
                 <td>
-                    @if (item.BeginDate <= DateTime.Today)
-                    {
-                        <p style="color:red">@item.BeginDate.ToShortDateString()</p>
-                    }
-                    else
-                    {
-                        @Html.DisplayFor(modelItem => item.BeginDate)
-                    }
+                    @Html.DisplayFor(modelItem => item.BeginDate)
                 </td>
 
                 <td>
@@ -62,92 +68,31 @@
                 </td>
             </tr>
         }
-        if (item.StatusRepair.ToString() == "Under_repair")
+        else
         {
-            <tr style='background-color:lightgoldenrodyellow;'>
+            string bgcolor;
+            string status = item.StatusRepair.ToString();
+
+            <tr style='background-color:white;'>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
 
-                <td>
+                    @switch (status)
+                    {
+                        case "On_hold": bgcolor = "red"; break;
+                        case "Under_repair": bgcolor = "black"; break;
+                        case "Waiting_for_parts": bgcolor = "black"; break;
+                        case "Done": bgcolor = "darkgreen"; break;
+                        default: bgcolor = "black"; return;
+                    }
+
+                <td style="color:@bgcolor;">
                     @Html.DisplayFor(modelItem => item.StatusRepair)
                 </td>
 
                 <td>
-                    @if (item.BeginDate <= DateTime.Today)
-                    {
-                        <p style="color:red">@item.BeginDate.ToShortDateString()</p>
-                    }
-                    else
-                    {
-                        @Html.DisplayFor(modelItem => item.BeginDate)
-                    }
-                </td>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.EndDate)
-                </td>
-
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
-            </tr>
-        }
-        if (item.StatusRepair.ToString() == "Waiting_for_parts")
-        {
-            <tr style='background-color: lightgoldenrodyellow;'>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.StatusRepair)
-                </td>
-
-                <td>
-                    @if (item.BeginDate <= DateTime.Today)
-                    {
-                        <p style="color:red">@item.BeginDate.ToShortDateString()</p>
-                    }
-                    else
-                    {
-                        @Html.DisplayFor(modelItem => item.BeginDate)
-                    }
-                </td>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.EndDate)
-                </td>
-
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
-            </tr>
-        }
-        if (item.StatusRepair.ToString() == "Done")
-        {
-            <tr style='background-color:lightgreen;'>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.StatusRepair)
-                </td>
-
-                <td>
-                    @if (item.BeginDate <= DateTime.Today)
-                    {
-                        <p style="color:red">@item.BeginDate.ToShortDateString()</p>
-                    }
-                    else
-                    {
-                        @Html.DisplayFor(modelItem => item.BeginDate)
-                    }
+                    @Html.DisplayFor(modelItem => item.BeginDate)
                 </td>
 
                 <td>
